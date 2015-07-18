@@ -11,7 +11,7 @@ exports.answer = function(req, res) {
   res.render('quizes/answer', {respuesta: 'Incorrecto'});
   }
 };
-/GET  /quizes/question
-exports.autor = function(req, res){
-  res.render('/autor',  {Autor: 'Autor de esta pratica:Quiz-040776'});
+//GET  /autor
+exports.author = function(req, res){
+  res.render('/author',  {Autor: 'Autor de esta practica:Quiz-040776'});
  };
