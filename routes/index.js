@@ -17,4 +17,5 @@ router.get('/quizes',                                                    quizCon
 router.get('/quizes/:quizId(\\d+)',                      quizController.show);
 router.get('/quizes/:quizId(\\d+)/answer',    quizController.answer);
 router.get('/author',                                                   quizController.author);
+router.delete('/quizes/:quizId(\\d+)',                                    quizController.destroy);
 module.exports = router;
