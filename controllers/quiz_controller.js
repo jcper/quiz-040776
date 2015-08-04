@@ -12,6 +12,21 @@ exports.load = function(req, res, next, quizId){
   ).catch(function(error) { next(error);});
  };
 
+//Get/quizes/:search
+
+
+ //var search = "%";
+ //search = "%" + req.query.search + "%";
+ //models.Quiz.findAll()({where: ["pregunta like ?", buscar]}).then(function(quizes){
+ // res.render('quizes/index.ejs', { quizes: buscar,  errors: [ ]});
+ //  }).catch(function(error) { next(error);})
+//};
+
+  
+
+
+
+
 // GET /quizes/:id/edit
 exports.edit = function(req, res) {
     var quiz= req.quiz; //autoload de instancia de quiz
@@ -74,15 +89,19 @@ exports.create = function(req, res) {
  };
   
 
-
-
-
-
 //GET /quizes
 exports.index = function(req, res){
- models.Quiz.findAll().then(function(quizes){
+ var search=req.query.search;
+ if(search!==undefined){
+    search = "%" + req.query.search + "%";
+   models.Quiz.findAll()({where: ["pregunta like ?", search]}).then(function(quizes){
+   res.render('quizes/index.ejs', { quizes: buscar,  errors: [ ]});
+   }).catch(function(error) { next(error);})
+   }else{
+  models.Quiz.findAll().then(function(quizes){
    res.render('quizes/index.ejs', { quizes: quizes,  errors: [ ]});
    }).catch(function(error) { next(error);})
+   }
 };
 
 

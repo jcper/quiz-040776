@@ -11,6 +11,7 @@ router.get('/', function(req, res) {
 router.param('quizId', quizController.load); //autoload :quizId
 router.get('/quizes/new',                                         quizController.new);
 router.post('/quizes/create',                                quizController.create);
+router.get('/quizes:search(\\d+)',                                  quizController.buscar);
 router.get('/quizes/:quizId(\\d+)/edit',          quizController.edit); 
 router.put('/quizes/:quizId(\\d+)',                    quizController.update);
 router.get('/quizes',                                                    quizController.index);
