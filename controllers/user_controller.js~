@@ -7,7 +7,7 @@ pepe:{id:2, username:"pepe", password:"5678"}
 // Si autenticacion falla o hay errores se ejecuta callback(error)
 exports.autenticar = function(login, password, callback) {
 if(users[login]){
-if(password===users[login].password){
+if(password === users[login].password){
 callback(null, users[login]);
 }
 else{ callback(new Error(' Password erroneo. ')); }
