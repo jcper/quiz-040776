@@ -18,15 +18,15 @@ router.post('/login',  sessionController.create);// crear sesion
 router.get('/logout',  sessionController.destroy);// destruir sesion
 
 //Definicion de rutas de /quizes
-router.get('/quizes/new',                                         quizController.new);
-router.post('/quizes/create',                                quizController.create);
-router.get('/quizes/:quizId(\\d+)/edit',          quizController.edit); 
-router.put('/quizes/:quizId(\\d+)',                    quizController.update);
-router.get('/quizes',                                                    quizController.index);
+router.get('/quizes/new',                    sessionController.loginrequired,quizController.new);
+router.post('/quizes/create',                sessionController.loginrequired,quizController.create);
+router.get('/quizes/:quizId(\\d+)/edit',     sessionController.loginrequired ,quizController.edit); 
+router.put('/quizes/:quizId(\\d+)',         sessionController.loginrequired, quizController.update);
+router.get('/quizes',                                   quizController.index);
 router.get('/quizes/:quizId(\\d+)',                      quizController.show);
-router.get('/quizes/:quizId(\\d+)/answer',    quizController.answer);
-router.get('/author',                                                   quizController.author);
-router.delete('/quizes/:quizId(\\d+)',                                    quizController.destroy);
+router.get('/quizes/:quizId(\\d+)/answer',              quizController.answer);
+router.get('/author',      sessionController.loginrequired, quizController.author);
+router.delete('/quizes/:quizId(\\d+)', sessionController.loginrequired,quizController.destroy);
 
 //Deficion de rutas de comentarios
 router.get('/quizes/:quizId(\\d+)/comments/new',         commentController.new);
