@@ -6,6 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var partials = require('express-partials');
 var methodOverride= require( 'method-override');
+var session = require('express-session');
 var app = express();
 var routes = require('./routes/index');
 
@@ -19,8 +20,9 @@ app.use(favicon(__dirname + '/public/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
+app.use(cookieParser('Quiz 040776'));
+app.use(session());
 app.use(methodOverride('_method'));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Helpers dinamicos:
