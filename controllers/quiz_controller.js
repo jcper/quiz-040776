@@ -114,7 +114,7 @@ exports.answer = function(req, res) {
 
 //GET  /autor
 exports.author = function(req, res){
-  res.render('author',  {Autor: 'Autor de esta practica:Quiz-040776',  errors: [ ] });
+  res.render('author',  {author: 'Autor de esta practica:Quiz-040776',  errors: [ ] });
 
  };
 
