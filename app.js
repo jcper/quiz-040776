@@ -24,17 +24,39 @@ app.use(cookieParser('Quiz 040776'));
 app.use(session());
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
-
 // Helpers dinamicos:
  app.use(function(req, res, next){
 // guardar path en session.redir para despues de login
+ if (!req.session.redir) {                                // si no existe lo inicializa
+            req.session.redir = '/';
+        }
 if(!req.path.match(/\/login|\/logout/)){
    req.session.redir = req.path;
  }
   //Hacer visible req.session en las vistas
   res.locals.session = req.session;
+  
   next();
  });
+
+//session autologout
+app.use(function(req, res, next) {
+
+if (req.session.user) {
+if (Date.now() - req.session.user.lastRequestTime > 2*60*1000) {
+delete req.session.user;
+  req.session.autologout=true;
+ console.log("sesion expirada han pasado mas de 2 minutos");
+ console.log(req.session.autologout);
+res.redirect("/login");
+} else {
+req.session.user.lastRequestTime = Date.now();
+
+}
+}
+next();
+});
+
 app.use('/', routes);
 
 

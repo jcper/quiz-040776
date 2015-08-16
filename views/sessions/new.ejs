@@ -1,5 +1,10 @@
 <h2>Login</h2>
-  <form method='post'  action='/login'>
+<form method='post'  action='/login'>
+<% if (session.autologout){ %>
+    <span id='ErrorMsgs'>
+      sesion ha expirado por favor vuelva a loguearse <br/>
+      </span>
+      <%  } %>
     <div class="field">
        <label for="login">Login:</label><br />
        <input type="text" id="login" name="login" size="30" />

@@ -11,6 +11,6 @@ if(password===users[login].password){
 callback(null, users[login]);
 }
 else{ callback(new Error(' Password erroneo. ')); }
-} else { callback(new Error('No existe el usuario.')); }
+}  callback(new Error('No existe el usuario.')); 
 };
 
