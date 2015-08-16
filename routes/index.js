@@ -25,7 +25,7 @@ router.put('/quizes/:quizId(\\d+)',         sessionController.loginRequired, qui
 router.get('/quizes',                                   quizController.index);
 router.get('/quizes/:quizId(\\d+)',                      quizController.show);
 router.get('/quizes/:quizId(\\d+)/answer',              quizController.answer);
-router.get('/author',      sessionController.loginRequired, quizController.author);
+router.get('/author',      quizController.author);
 router.delete('/quizes/:quizId(\\d+)', sessionController.loginRequired,quizController.destroy);
 
 //Deficion de rutas de comentarios
